@@ -28,7 +28,7 @@ def predict(img):
     with graph.as_default():
         set_session(sess)
         preds = cifar10_model.predict(x)[0]
-        return {classes[x]: float(preds[x]) for x in np.argsort(preds)[::-1][:5]}
+        return {classes[x]: float(preds[x]) for x in np.argsort(preds)[::-1][:3]}
 
 
 @app.route("/")

@@ -10,5 +10,5 @@ COPY . /app
 WORKDIR /app
 COPY --from=builder /ui/build ./build
 RUN pip install -r requirements.txt
-RUN ui_cd.sh
+RUN bash ./ui_cd.sh
 CMD gunicorn server:app --log-file=-

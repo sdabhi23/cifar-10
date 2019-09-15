@@ -4,7 +4,6 @@ from tensorflow.python.keras.backend import set_session
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 import tensorflow.compat.v1.logging as logs
-from flask_cors import CORS
 from PIL import Image
 import numpy as np
 
@@ -16,7 +15,6 @@ set_session(sess)
 cifar10_model = load_model('model.h5')
 
 app = Flask(__name__)
-CORS(app)
 
 classes = ['airplane', 'automobile', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
@@ -47,6 +45,7 @@ def classify():
     except:
         abort(400)
     return jsonify(predict(img))
+
 
 @app.route("/cifar10.png")
 def favicon():

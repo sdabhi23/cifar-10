@@ -5,5 +5,41 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  padding: 10vh 0;
   flex-direction: column;
+  background-color: #940000;
+}
+
+.ant-table-header-column {
+  width: 100%;
+}
+
+.ant-table-header-column > div {
+  text-align: center;
+}
+
+.ant-table-row-level-0 {
+  text-align: center;
+  background-color: #fff;
+}
+
+.ant-upload-select-picture-card {
+  height: 30vh !important;
+  width: 30vw !important;
+  background-color: #f3f3f3 !important;
+  border: 1px dashed #000 !important;
+}
+
+.main-content {
+  width: 30%;
+}
+
+@media only screen and (max-width: 768px) {
+  .ant-upload-select-picture-card {
+    width: 75vw !important;
+  }
+
+  .main-content {
+    width: 75%;
+  }
 }

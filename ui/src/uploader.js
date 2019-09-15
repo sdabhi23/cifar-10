@@ -13,52 +13,43 @@ const beforeUpload = file => {
     if (!isJpgOrPng) {
         message.error("You can only upload JPG/PNG file!");
     }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-        message.error("Image must smaller than 2MB!");
-    }
-    return isJpgOrPng && isLt2M;
+    return isJpgOrPng;
 };
 
 class Uploader extends React.Component {
     state = {
-        loading: false
+        loading: false,
+        preds: null,
     };
 
     handleChange = info => {
         if (info.file.status === "uploading") {
             this.setState({ loading: true });
-            console.log("uploading");
+            this.props.loading(true);
             return;
         }
         if (info.file.status === "done") {
-            console.log(info.response)
-            console.log(info.event)
-            // Get this url from response in real world.
+            console.log(info.file.response)
             getBase64(info.file.originFileObj, imageUrl =>
                 this.setState({
                     imageUrl,
-                    loading: false
+                    loading: false,
+                    preds: info.file.response,
                 })
             );
+            this.props.loading(false);
+            this.props.onResponse(info);
         }
         if (info.file.status === "error") {
-            // Get this url from response in real world.
             this.setState({
                 loading: false
             });
+            this.props.loading(false);
             console.log("error");
         }
     };
 
-    dummyRequest = (file, onSuccess) => {
-        setTimeout(() => {
-            console.log(file);
-        }, 1);
-    }
-
     render() {
-        // const { getFieldDecorator } = this.props.form;
         const uploadButton = (
             <div>
                 <Icon type={this.state.loading ? "loading" : "plus"} />
@@ -73,10 +64,8 @@ class Uploader extends React.Component {
                 className="avatar-uploader"
                 showUploadList={false}
                 action="https://cifar-10.herokuapp.com/classify"
-                // customRequest={this.dummyRequest}
                 beforeUpload={beforeUpload}
                 onChange={this.handleChange}
-            // onError={() => console.log("Error")}
             >
                 {imageUrl ? (
                     <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
@@ -85,18 +74,6 @@ class Uploader extends React.Component {
                     )
                 }
             </Upload>
-            // <Form onSubmit={this.handleSubmit}>
-            //     <Form.Item>
-            //         {
-            //             getFieldDecorator("file", {
-            //                 valuePropName: 'fileList',
-            //                 getValueFromEvent: this.handleChange
-            //             })(
-
-            //             )
-            //         }
-            //     </Form.Item>
-            // </Form>
         );
     }
 }

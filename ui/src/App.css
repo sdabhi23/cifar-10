@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  padding: 10vh 0;
+  padding: 5vh 0;
   flex-direction: column;
   background-color: #940000;
 }
@@ -16,11 +16,14 @@
 
 .ant-table-header-column > div {
   text-align: center;
+  font-size: 1.05rem;
+  font-weight: bold;
 }
 
 .ant-table-row-level-0 {
   text-align: center;
   background-color: #fff;
+  font-size: 1.05rem;
 }
 
 .ant-upload-select-picture-card {
@@ -30,8 +33,22 @@
   border: 1px dashed #000 !important;
 }
 
+.ant-upload-select-picture-card > span > img {
+  width: auto !important;
+  max-height: 30vh;
+}
+
+.ant-card-body {
+  padding: 0;
+}
+
 .main-content {
   width: 30%;
+}
+
+a {
+  color: #f0f0f0 !important;
+  text-decoration: underline !important;
 }
 
 @media only screen and (max-width: 768px) {

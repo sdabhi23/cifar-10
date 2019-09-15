@@ -52,8 +52,14 @@ class Uploader extends React.Component {
     render() {
         const uploadButton = (
             <div>
-                <Icon type={this.state.loading ? "loading" : "plus"} />
-                <div className="ant-upload-text">Upload</div>
+                <Icon
+                    type={this.state.loading ? "loading" : "plus"}
+                    style={{ fontSize: '2em' }} />
+                <div
+                    className="ant-upload-text"
+                    style={{ fontSize: '1.1em', fontWeight: 'bold' }}>
+                    Upload Image
+                </div>
             </div>
         );
         const { imageUrl } = this.state;

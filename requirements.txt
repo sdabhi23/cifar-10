@@ -1,5 +1,6 @@
 tensorflow==1.14.0
 numpy==1.16.5
+flask-cors
 gunicorn
 pillow
 flask

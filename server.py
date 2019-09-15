@@ -4,6 +4,7 @@ from flask import Flask, jsonify, request, abort
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 import tensorflow.compat.v1.logging as logs
+from flask_cors import CORS
 from PIL import Image
 import numpy as np
 
@@ -15,6 +16,7 @@ set_session(sess)
 cifar10_model = load_model('model.h5')
 
 app = Flask(__name__)
+CORS(app)
 
 classes = ['airplane', 'automobile', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck']

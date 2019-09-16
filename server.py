@@ -33,7 +33,6 @@ def predict(img):
 
 @app.route("/")
 def index():
-    # return jsonify({"message": "Welcome to Cifar 10 classification API"})
     return render_template('index.html')
 
 

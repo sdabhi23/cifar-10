@@ -11,4 +11,5 @@ WORKDIR /app
 COPY --from=builder /ui/build ./build
 RUN pip install -r requirements.txt
 RUN bash ./ui_cd.sh
-CMD gunicorn server:app --log-file=-
+ENV WEB_CONCURRENCY=1
+CMD gunicorn server:app

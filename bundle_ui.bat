@@ -1,8 +1,12 @@
 cd ui
 
+rm -rf package-lock.json node_modules/
+
+CALL npm install
+
 rm -rf build
 
-CALL yarn build
+CALL npm run build
 
 cd ..
 

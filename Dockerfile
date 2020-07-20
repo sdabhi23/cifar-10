@@ -1,10 +1,10 @@
-FROM node:10-alpine as builder
+FROM node:12-alpine as builder
 COPY ./ui /ui
 WORKDIR /ui
 RUN npm ci
 RUN npm run build
 
-FROM python:3.6-slim-stretch
+FROM python:3.7-slim-stretch
 LABEL maintainer="shrey.dabhi23@gmail.com"
 COPY . /app
 WORKDIR /app

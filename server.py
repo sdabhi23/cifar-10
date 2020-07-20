@@ -4,7 +4,7 @@ from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
 
-cifar10_model = load_model('model.h5')
+cifar10_model = load_model('MobileNetV2__2020-07-20-10-32-55.h5')
 
 app = Flask(__name__)
 

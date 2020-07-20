@@ -11,3 +11,7 @@ cp build/*.json templates/
 cp build/*.png templates/
 
 cp build/*.js templates/
+
+rm -rf build/
+
+rm -rf ui/
